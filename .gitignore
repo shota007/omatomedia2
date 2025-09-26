@@ -1,0 +1,18 @@
+# Ruby/Rails
+/.bundle
+/log
+/tmp
+/storage
+/public/assets
+/vendor/bundle
+/node_modules
+/.byebug_history
+.DS_Store
+
+# DB/credentials
+/config/master.key
+/.env
+
+# SQLite (使っていれば)
+/db/*.sqlite3
+/db/*.sqlite3-*
