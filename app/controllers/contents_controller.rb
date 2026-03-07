@@ -8,10 +8,16 @@ class ContentsController < ApplicationController
   require 'open3'
 
   def index
-    scope = Content.all
+    scope = Content.includes(
+      { user: { avatar_attachment: :blob } },
+      :tags,
+      :favorites,
+      { img_file_attachment: :blob }
+    )
     scope = scope.looks(params[:word]) if params[:word].present?
     scope = scope.where(category_id: params[:category_id]) if params[:category_id].present?
     @contents = scope.order(created_at: :desc)
+    @favorited_content_ids = current_user ? current_user.favorites.pluck(:content_id).to_set : Set.new
   end
 
   def new
@@ -129,8 +135,8 @@ def create
   def show
     @content = Content.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.where(content_id: @content.id)
-    @user = User.find(@content.user_id)
+    @comments = @content.comments.includes(user: { avatar_attachment: :blob })
+    @user = @content.user
   end
 
   def share
