@@ -2,65 +2,75 @@
 <% show_full = local_assigns.fetch(:show_full, false) %>
 <% uid = dom_id(content, :card) %>
 
-<div class="content-card position-relative" id="<%= uid %>">
-  <%= render "contents/user_name", content: content %>
+<div class="content-card h-100" id="<%= uid %>">
 
-  <h3 class="mb-2">
-    <% if show_full %>
-      <span class="text-dark text-decoration-none"><%= content.title %></span>
-    <% else %>
-      <%= link_to content.title, content_path(content), class: "text-decoration-none text-dark" %>
-    <% end %>
-  </h3>
-
-  <div class="content_sumtext">
-    <div class="d-flex my-3">
-      <div class="yt-thumb-wrapper">
-        <% thumb =
-            if content.img_file.attached?
-              url_for(content.img_file)
-            elsif content.youtube_id.present?
-              "https://img.youtube.com/vi/#{content.youtube_id}/hqdefault.jpg"
-            else
-              asset_path("no-thum.png")
-            end %>
-
-        <% if show_full %>
-          <%= image_tag thumb, class: (content.youtube_id.present? ? "yt-thumb" : "content_image") %>
-        <% else %>
-          <%= link_to content_path(content) do %>
-            <%= image_tag thumb, class: (content.youtube_id.present? ? "yt-thumb" : "content_image") %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+  <%# サムネイル %>
+  <div class="yt-thumb-wrapper">
+    <% thumb =
+        if content.img_file.attached?
+          url_for(content.img_file)
+        elsif content.youtube_id.present?
+          "https://img.youtube.com/vi/#{content.youtube_id}/hqdefault.jpg"
+        else
+          asset_path("no-thum.png")
+        end %>
 
     <% if show_full %>
-      <!-- 詳細ページ：常に全文（transcribed_text 優先、無ければ summarized_text） -->
-      <div class="full-text">
-        <p>＜全文＞</p>
-        <%= simple_format((content.transcribed_text.presence || content.summarized_text).to_s) %>
-      </div>
+      <%= image_tag thumb, class: "yt-thumb-img", alt: content.title %>
     <% else %>
-      <!-- 一覧など：プレビューだけ -->
-      <% preview_text = content.summarized_text.presence || content.transcribed_text %>
-      <p>＜要約＞</p>
-      <p class="mb-2"><%= truncate(preview_text.to_s, length: 200) %></p>
-      <%# <%= link_to "全文を読む", content_path(content), class: "stretched-link btn btn-link p-0 align-baseline" %>
-      <%= link_to "全文を読む", content_path(content), class: "stretched-link btn btn-link p-0 align-baseline" %>
-    <% end %>
-
-    <% tags = Array(content.tag_list).reject(&:blank?) %>
-    <% if tags.any? %>
-      <p class="mb-0 mt-2 position-relative" style="z-index: 2;">
-        <% tags.each do |tag| %>
-          <%= link_to "##{tag}", contents_path(tag: tag), class: "badge bg-secondary me-1" %>
-        <% end %>
-      </p>
+      <%= link_to content_path(content) do %>
+        <%= image_tag thumb, class: "yt-thumb-img", alt: content.title %>
+      <% end %>
     <% end %>
   </div>
 
-  <div class="mt-2">
-    <%= render partial: "contents/func_btn", locals: { content: content } %>
+  <%# カード本文 %>
+  <div class="card-body-custom px-3 pt-2 pb-1">
+
+    <%# 投稿者情報 %>
+    <%= render "contents/user_name", content: content %>
+
+    <%# タイトル %>
+    <h3 class="content-title mb-2">
+      <% if show_full %>
+        <span class="text-dark"><%= content.title %></span>
+      <% else %>
+        <%= link_to content.title, content_path(content),
+              class: "text-decoration-none text-dark stretched-link-title" %>
+      <% end %>
+    </h3>
+
+    <%# テキスト %>
+    <div class="content-text mb-2">
+      <% if show_full %>
+        <p class="text-muted small mb-1">＜全文＞</p>
+        <%= simple_format((content.transcribed_text.presence || content.summarized_text).to_s,
+              {}, wrapper_tag: "div", sanitize: false) %>
+      <% else %>
+        <% preview_text = content.summarized_text.presence || content.transcribed_text %>
+        <p class="text-muted small mb-1">＜要約＞</p>
+        <p class="mb-1"><%= truncate(preview_text.to_s, length: 160) %></p>
+        <%= link_to "全文を読む →", content_path(content),
+              class: "btn btn-link btn-sm p-0 read-more-link position-relative",
+              style: "z-index:2;" %>
+      <% end %>
+    </div>
+
+    <%# タグ %>
+    <% tags = Array(content.tag_list).reject(&:blank?) %>
+    <% if tags.any? %>
+      <div class="mb-2 position-relative" style="z-index:2;">
+        <% tags.each do |tag| %>
+          <%= link_to "##{tag}", contents_path(word: tag),
+                class: "badge bg-secondary text-decoration-none me-1" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%# アクションボタン %>
+    <div class="border-top pt-2 pb-1">
+      <%= render partial: "contents/func_btn", locals: { content: content } %>
+    </div>
+
   </div>
 </div>
