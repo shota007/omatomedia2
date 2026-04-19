@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   require 'streamio-ffmpeg'
 
+  CHUNK_SECONDS = 600 # 10分ごとに分割（Whisper APIの25MB制限対策）
+
     def create_tempfile(content)
         client = Aws::S3::Client.new(region: "ap-northeast-1", access_key_id: ENV["AWS_ACCESS_KEY_ID"], secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"])
         file = client.get_object(bucket: "omatomedia", :key => content.audio_file.key).body.read
@@ -15,11 +17,11 @@ class ApplicationController < ActionController::Base
         
     def split_audio(tempfile)
         movie = FFMPEG::Movie.new(tempfile.path)
-        parts = (movie.duration / chunk_seconds).ceil
+        parts = (movie.duration / CHUNK_SECONDS).ceil
         Array.new(parts) do |i|
           out = Tempfile.new(["chunk#{i}", ".mp3"])
           out.binmode
-          FFMPEG::Transcoder.new(tempfile.path, out.path, seek_time: i*chunk_seconds, duration: chunk_seconds).run
+          FFMPEG::Transcoder.new(tempfile.path, out.path, seek_time: i*CHUNK_SECONDS, duration: CHUNK_SECONDS).run
           out
         end
       end

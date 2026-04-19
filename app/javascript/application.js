@@ -9,7 +9,4 @@ import "dropdown"
 import "nprogress_init"
 import "update_password"
 
-// Stimulus（controllers/ 以下を自動登録）
-import "controllers"
-
 console.log("[application.js] loaded")

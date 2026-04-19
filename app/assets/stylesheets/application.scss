@@ -1,23 +1,56 @@
 // app/assets/stylesheets/application.scss
 
+$navbar-height: 56px;
+$brand-yellow:  #FAD02C;
+$sidebar-width: 200px;
+
+// ─── ベースレイアウト ─────────────────────────────────────────
 html, body {
-  width: 100% !important;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   padding: 0;
-  max-width: 1000px;
+  background-color: #f8f9fa;
 }
 
-.container-fluid {
-  max-width: none !important;
-  width: 100%   !important;
+// fixed-top navbarの下に隠れないよう余白
+.pt-navbar {
+  padding-top: $navbar-height;
 }
 
-.navbar {
-  background-color: #FAD02C;
+// コンテンツ幅制限（max 1000px 中央揃え）
+.app-container {
   max-width: 1000px;
   margin: 0 auto;
 }
 
+.main-content {
+  min-height: calc(100vh - #{$navbar-height} - 80px);
+}
+
+// ─── ナビバー ─────────────────────────────────────────────────
+.navbar {
+  background-color: $brand-yellow !important;
+  height: $navbar-height;
+}
+
+// ─── サイドバー ───────────────────────────────────────────────
+.sidebar-wrapper {
+  position: sticky;
+  top: calc(#{$navbar-height} + 16px);
+  padding: 16px 8px;
+}
+
+.sidebar-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #adb5bd;
+  text-transform: uppercase;
+  padding: 0 8px;
+  margin-bottom: 8px;
+}
+
+// ─── グリッド ─────────────────────────────────────────────────
 .row {
   width: 100%;
 }
@@ -54,10 +87,24 @@ html, body {
   font-weight: bold;
 }
 
-.content-card .func_btn,
-.content-card .actions-row {
-  position: relative;
-  z-index: 2; /* stretched-link より前に */
+// ─── コンテンツカード ──────────────────────────────────────────
+.content-card {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    transform: translateY(-2px);
+  }
+
+  .func_btn,
+  .actions-row {
+    position: relative;
+    z-index: 2;
+  }
 }
 .content_avatar{
     padding-top: 5px;
@@ -68,6 +115,37 @@ html, body {
 
 .content_sumtext{
     font-size: 14px;
+}
+
+// カード内スタイル
+.card-body-custom {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.content-text {
+  font-size: 0.85rem;
+  color: #495057;
+}
+
+.read-more-link {
+  font-size: 0.8rem;
+}
+
+// サムネイル（黒帯なし・全幅）
+.yt-thumb-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .content_image {

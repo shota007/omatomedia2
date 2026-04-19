@@ -3,6 +3,19 @@
     <span class="input-group-text bg-white border-0" style="opacity:0.8;">
       <i class="fa-solid fa-magnifying-glass text-muted"></i>
     </span>
-    <%= f.text_field :word, class: "form-control border-0", placeholder: "Search", autocomplete: "off", style: "opacity:0.8;" %>
+    <%= f.text_field :word,
+          value: params[:word],
+          class: "form-control border-0",
+          placeholder: "動画を検索...",
+          autocomplete: "off",
+          style: "opacity:0.9;" %>
+    <% if params[:word].present? %>
+      <%= link_to contents_path,
+            class: "input-group-text bg-white border-0 text-muted",
+            title: "検索をクリア",
+            style: "opacity:0.8;" do %>
+        <i class="fa-solid fa-xmark"></i>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
