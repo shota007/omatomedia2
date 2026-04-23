@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_09_002837) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "\"user_id\", \"contet_id\"", name: "index_comments_on_user_id_and_contet_id"
+    t.index ["user_id", "content_id"], name: "index_comments_on_user_id_and_content_id"
   end
 
   create_table "contents", force: :cascade do |t|
@@ -73,8 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_09_002837) do
     t.integer "content_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "\"user_id\", \"contet_id\"", name: "index_favorites_on_user_id_and_contet_id"
-    t.index ["user_id", "content_id"], name: "index_favorites_on_user_id_and_content_id"
+    t.index ["user_id", "content_id"], name: "index_favorites_on_user_id_and_content_id", unique: true
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -127,6 +126,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_09_002837) do
   add_foreign_key "comments", "users"
   add_foreign_key "contents", "categories"
   add_foreign_key "contents", "users"
-  add_foreign_key "contents", "users"
+  add_foreign_key "favorites", "contents"
+  add_foreign_key "favorites", "users"
   add_foreign_key "taggings", "tags"
 end

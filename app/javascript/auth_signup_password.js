@@ -4,15 +4,16 @@ console.log("auth_signup_password.jsが読み込まれました");
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification,sendSignInLinkToEmail, isSignInWithEmailLink } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyAJttMOEQxjhfJZmeNhuyrJUJmMzFahPOo",
-    authDomain: "obrest-4005c.firebaseapp.com",
-    projectId: "obrest-4005c",
-    storageBucket: "obrest-4005c.firebasestorage.app",
-    messagingSenderId: "349152284643",
-    appId: "1:349152284643:web:673ed8c3a110cf1b391ad6",
-    measurementId: "G-444V4EJ2ZM"
-    };
+  apiKey: "AIzaSyB-2TPcumLKAe0lVXxP2Khy1pOfRGGfx6Q",
+  authDomain: "omatomedia-bdb85.firebaseapp.com",
+  projectId: "omatomedia-bdb85",
+  storageBucket: "omatomedia-bdb85.firebasestorage.app",
+  messagingSenderId: "677355905915",
+  appId: "1:677355905915:web:3fe0e27e7e0909d1ce93de",
+  measurementId: "G-3SN6D4RT27"
+};
 const app      = initializeApp(firebaseConfig);
 const auth     = getAuth(app);
 const provider = new GoogleAuthProvider();
