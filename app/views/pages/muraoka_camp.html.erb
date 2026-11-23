@@ -1,0 +1,207 @@
+<%# ① ヒーロー %>
+<section class="camp-hero d-flex align-items-center justify-content-center text-center" id="hero">
+  <div class="camp-hero-overlay"></div>
+  <div class="camp-hero-content">
+    <h1 class="camp-hero-title">村岡キャンプ</h1>
+    <p class="camp-hero-copy">まちの未来を、焚き火のそばで話そう。</p>
+    <div class="camp-hero-divider"></div>
+    <p class="camp-hero-date">2026年7月25日（土）・26日（日）</p>
+    <a href="#apply" class="btn camp-btn-primary camp-btn-lg">参加申し込みはこちら</a>
+    <div class="camp-scroll-indicator">
+      <span>SCROLL</span>
+      <div class="camp-scroll-arrow">&#8964;</div>
+    </div>
+  </div>
+</section>
+
+<%# ② 村岡キャンプへの思い %>
+<section class="camp-section" id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-md-6">
+        <h2 class="camp-section-title">村岡キャンプへの思い</h2>
+        <div class="camp-section-underline"></div>
+        <p class="camp-about-text mt-4">
+          村岡の自然、人、文化、そして未来。<br>
+          私たちは、焚き火を囲みながら語り合う時間を<br>
+          大切にしています。<br><br>
+          このキャンプが、まちの未来を一緒に考える<br>
+          きっかけになればと願っています。
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="camp-img-placeholder">
+          <span>自然・村岡の風景写真</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ③ プレキャンプを経て、本募集へ %>
+<section class="camp-section camp-section-light" id="precamp">
+  <div class="container">
+    <h2 class="camp-section-title text-center">プレキャンプを経て、本募集へ</h2>
+    <div class="camp-section-underline mx-auto"></div>
+    <p class="camp-section-lead text-center mt-3">
+      プレキャンプでは、地域の魅力を再発見し、たくさんの出会いや学びが生まれました。<br>
+      その経験をふまえ、いよいよ本キャンプの参加者を募集します！
+    </p>
+
+    <div class="row g-4 mt-2 mb-5">
+      <% ["プレキャンプ写真1", "プレキャンプ写真2", "プレキャンプ写真3"].each do |label| %>
+        <div class="col-md-4">
+          <div class="camp-img-placeholder camp-img-sm">
+            <span><%= label %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="camp-feature-card">
+          <div class="camp-feature-icon">&#128269;</div>
+          <h4 class="camp-feature-title">地域の魅力を再発見</h4>
+          <p class="camp-feature-desc">歩いて、話して、体験して。村岡の新しい魅力に出会えました。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="camp-feature-card">
+          <div class="camp-feature-icon">&#128101;</div>
+          <h4 class="camp-feature-title">世代を超えた交流</h4>
+          <p class="camp-feature-desc">子どもから大人まで、自然とつながりながら仲間が生まれました。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="camp-feature-card">
+          <div class="camp-feature-icon">&#127988;</div>
+          <h4 class="camp-feature-title">本キャンプへの手応え</h4>
+          <p class="camp-feature-desc">みんなの思いが重なり、本番への期待が高まっています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ④ 動画 %>
+<section class="camp-section" id="videos">
+  <div class="container">
+    <h2 class="camp-section-title text-center">動画で見る村岡キャンプ</h2>
+    <div class="camp-section-underline mx-auto"></div>
+    <div class="row g-4 mt-3">
+      <% [
+        { label: "a. プレキャンプの様子", desc: "プレキャンプの雰囲気や活動の様子をご覧いただけます。" },
+        { label: "b. 代表からのメッセージ", desc: "代表からの思いや、村岡キャンプにかける思いをお届けします。" },
+        { label: "c. キャンプサイコーおじさんからのメッセージ", desc: "キャンプサイコーおじさんからのメッセージ動画です。" }
+      ].each do |video| %>
+        <div class="col-md-4">
+          <div class="camp-video-card">
+            <div class="camp-video-thumb">
+              <div class="camp-play-btn">&#9654;</div>
+            </div>
+            <p class="camp-video-label"><%= video[:label] %></p>
+            <p class="camp-video-desc"><%= video[:desc] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%# ⑤ イベント概要 %>
+<section class="camp-section camp-section-light" id="overview">
+  <div class="container">
+    <h2 class="camp-section-title text-center">イベント概要</h2>
+    <div class="camp-section-underline mx-auto"></div>
+    <div class="row g-4 mt-3">
+      <div class="col-md-4 col-sm-6">
+        <div class="camp-overview-card">
+          <div class="camp-overview-icon">&#128197;</div>
+          <h5 class="camp-overview-label">開催日</h5>
+          <p class="camp-overview-val">2026年7月25日（土）・26日（日）<br>1泊2日<br><small>※荒天決行・荒天中止</small></p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="camp-overview-card">
+          <div class="camp-overview-icon">&#128205;</div>
+          <h5 class="camp-overview-label">会場</h5>
+          <p class="camp-overview-val">神奈川県藤沢市村岡エリア<br>（詳細はお申し込み後にご案内）<br><small>※駐車場・アクセス情報あり</small></p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="camp-overview-card">
+          <div class="camp-overview-icon">&#128100;</div>
+          <h5 class="camp-overview-label">対象</h5>
+          <p class="camp-overview-val">どなたでもご参加いただけます<br>（小学生以下は保護者同伴）<br><small>※地域内外問いません</small></p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="camp-overview-card">
+          <div class="camp-overview-icon">&#165;</div>
+          <h5 class="camp-overview-label">参加費</h5>
+          <p class="camp-overview-val">大人：3,000円<br>子ども：1,500円（小学生以上）<br>未就学児：無料</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="camp-overview-card">
+          <div class="camp-overview-icon">&#128101;</div>
+          <h5 class="camp-overview-label">定員</h5>
+          <p class="camp-overview-val">100名程度（先着順）<br><small>※定員に達し次第、受付を終了します。</small></p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="camp-overview-card">
+          <div class="camp-overview-icon">&#127976;</div>
+          <h5 class="camp-overview-label">持ち物</h5>
+          <p class="camp-overview-val">動きやすい服装・帽子・タオル<br>飲み物・マイ食器・懐中電灯 など<br><small>※詳細は後日ご案内します。</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ⑥ 注意事項 %>
+<section class="camp-section" id="notes">
+  <div class="container">
+    <h2 class="camp-section-title text-center">イベントに関する注意</h2>
+    <div class="camp-section-underline mx-auto"></div>
+    <div class="mt-4" style="max-width:720px; margin-left:auto; margin-right:auto;">
+      <div class="accordion camp-accordion" id="notesAccordion">
+        <% [
+          { id: "weather",  title: "天候について",          body: "荒天時（台風・大雨警報等）は中止となります。中止の場合は前日18時までにご連絡します。参加費は全額返金いたします。" },
+          { id: "safety",   title: "安全について",           body: "スタッフが常時巡回し、安全管理を徹底します。万が一のケガに備え、救急キットを常備しています。体調不良の場合はスタッフへご連絡ください。" },
+          { id: "children", title: "お子さまの見守りについて", body: "小学生以下のお子さまは保護者の同伴が必要です。お子さまから目を離さないようお願いします。スタッフによる安全な環境作りも行います。" },
+          { id: "photo",    title: "写真・動画撮影について",  body: "イベント中にスタッフによる写真・動画撮影を行います。撮影した素材はSNSや広報資料に使用する場合があります。撮影不可の場合はスタッフへお申し出ください。" },
+          { id: "cancel",   title: "キャンセルについて",      body: "キャンセルは開催7日前まで受け付けます。7日前を過ぎてのキャンセルは参加費の返金ができませんのでご了承ください。" }
+        ].each_with_index do |item, i| %>
+          <div class="accordion-item camp-accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed camp-accordion-btn" type="button"
+                      data-bs-toggle="collapse" data-bs-target="#note-<%= item[:id] %>">
+                <%= item[:title] %>
+              </button>
+            </h2>
+            <div id="note-<%= item[:id] %>" class="accordion-collapse collapse" data-bs-parent="#notesAccordion">
+              <div class="accordion-body camp-accordion-body">
+                <%= item[:body] %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ⑦ CTA %>
+<section class="camp-cta" id="apply">
+  <div class="container text-center">
+    <h2 class="camp-cta-title">この夏、村岡で一緒にキャンプしませんか？</h2>
+    <p class="camp-cta-text">
+      自然の中で、語り合い、笑い合い、つながる2日間。<br>
+      まちの未来を、あなたと一緒に描くキャンプです。
+    </p>
+    <a href="https://forms.google.com" target="_blank" class="btn camp-btn-primary camp-btn-lg">参加申し込みはこちら</a>
+  </div>
+</section>

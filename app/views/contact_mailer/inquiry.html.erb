@@ -1,0 +1,20 @@
+<h2>MeRock お問い合わせ通知</h2>
+
+<table style="border-collapse:collapse; width:100%; font-size:14px;">
+  <tr>
+    <th style="text-align:left; padding:8px 12px; background:#f5f5f5; border:1px solid #ddd; width:140px;">お名前</th>
+    <td style="padding:8px 12px; border:1px solid #ddd;"><%= @name %></td>
+  </tr>
+  <tr>
+    <th style="text-align:left; padding:8px 12px; background:#f5f5f5; border:1px solid #ddd;">会社名</th>
+    <td style="padding:8px 12px; border:1px solid #ddd;"><%= @company.presence || "未入力" %></td>
+  </tr>
+  <tr>
+    <th style="text-align:left; padding:8px 12px; background:#f5f5f5; border:1px solid #ddd;">メールアドレス</th>
+    <td style="padding:8px 12px; border:1px solid #ddd;"><%= @email %></td>
+  </tr>
+  <tr>
+    <th style="text-align:left; padding:8px 12px; background:#f5f5f5; border:1px solid #ddd;">お悩み・ご相談概要</th>
+    <td style="padding:8px 12px; border:1px solid #ddd; white-space:pre-wrap;"><%= @description %></td>
+  </tr>
+</table>

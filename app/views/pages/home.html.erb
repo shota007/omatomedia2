@@ -1,0 +1,258 @@
+<%# ① Hero %>
+<section class="lp-hero d-flex align-items-center">
+  <div class="container text-center">
+    <p class="lp-hero-sub mb-3">AI × クリエイティブ × 現場力</p>
+    <h1 class="lp-hero-title mb-4">
+      あなたの会社にも<br>AIの力を。
+    </h1>
+    <p class="lp-hero-lead mb-5">
+      AIでDXを促進。現場で必要なものを現場で作るDX。
+    </p>
+    <a href="#contact" class="btn lp-btn-primary lp-btn-lg">まずは無料相談する →</a>
+  </div>
+</section>
+
+<%# ② 課題提起 %>
+<section class="lp-section lp-pain" id="pain">
+  <div class="container">
+    <h2 class="lp-section-title text-center mb-5">こんなお悩みはありませんか？</h2>
+    <div class="row justify-content-center g-4">
+      <% [
+        { icon: "🤔", text: "AIを活用したいけど、どうすればいいのかわからない" },
+        { icon: "⚙️", text: "現場の業務を効率化したい。本気でDXを進めたい。" },
+        { icon: "😔", text: "SaaSやシステムを導入したけど、結局現場に合わない。" },
+        { icon: "📄", text: "ペーパーワーク・アナログな業務をなんとかしたい。" },
+        { icon: "💸", text: "でも、高い費用は払えない。" },
+      ].each do |item| %>
+        <div class="col-md-6 col-lg-4">
+          <div class="lp-pain-card">
+            <span class="lp-pain-icon"><%= item[:icon] %></span>
+            <p class="mb-0"><%= item[:text] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="text-center mt-5">
+      <p class="lp-pain-answer">そのお悩み、<strong>MeRock</strong> が解決します。</p>
+    </div>
+  </div>
+</section>
+
+<%# ③ サービス紹介 %>
+<section class="lp-section lp-services-section" id="services">
+  <div class="container">
+    <h2 class="lp-section-title text-center mb-2">サービス紹介</h2>
+    <p class="text-center text-muted mb-5">3つの柱で、あなたのビジネスを支えます。</p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="lp-service-card h-100">
+          <div class="lp-service-icon">🤖</div>
+          <h3 class="lp-service-name">AI活用DX支援</h3>
+          <p class="lp-service-tagline">業務効率化・自動化の導入支援</p>
+          <p class="lp-service-desc">現場に入り込んで本当に必要なものを低価格で開発。コストを抑えながら、現場に根付くDXを実現します。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="lp-service-card h-100">
+          <div class="lp-service-icon">📱</div>
+          <h3 class="lp-service-name">マーケ支援</h3>
+          <p class="lp-service-tagline">動画編集・SNS運用で会社をアピール</p>
+          <p class="lp-service-desc">新規顧客開拓、ファン作り、採用のため、企業の魅力を最大限に発信。動画からSNSまで一貫して支援します。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="lp-service-card h-100">
+          <div class="lp-service-icon">✨</div>
+          <h3 class="lp-service-name">ブランディングコンサル</h3>
+          <p class="lp-service-tagline">世界観設計から発信まで一貫支援</p>
+          <p class="lp-service-desc">御社の強みや想いを拾い上げ、これからの方向性を見定める。MVV策定からSWOT分析まで丁寧に伴走します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ④ 選ばれる理由 %>
+<section class="lp-section lp-why" id="why-us">
+  <div class="container">
+    <h2 class="lp-section-title text-center mb-5">選ばれる理由</h2>
+    <div class="row g-4 justify-content-center">
+      <% [
+        { num: "01", title: "AIを使うから安価", desc: "AIを最大限活用することでコストを圧縮。中小企業の予算感に合わせた柔軟な対応が可能です。" },
+        { num: "02", title: "一気通貫で対応", desc: "IT・事業開発・営業・バックオフィス・戦略・財務まで幅広い業務実績。ワンストップで課題解決します。" },
+        { num: "03", title: "幅広い業界・規模の実績", desc: "大企業からスタートアップ、国立機関・医療・製造・自治体まで多岐にわたる支援実績があります。" },
+      ].each do |item| %>
+        <div class="col-md-4">
+          <div class="lp-why-card">
+            <div class="lp-why-num"><%= item[:num] %></div>
+            <h4 class="lp-why-title"><%= item[:title] %></h4>
+            <p class="lp-why-desc mb-0"><%= item[:desc] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%# ⑤ 実績・事例 %>
+<section class="lp-section lp-cases-section" id="cases">
+  <div class="container">
+    <h2 class="lp-section-title text-center mb-2">実績・事例</h2>
+    <p class="text-center text-muted mb-5">様々な業界・規模のプロジェクトを支援してきました。</p>
+
+    <div class="row g-4">
+      <% [
+        {
+          client: "国立研究機関",
+          scope:  "ブランディングコンサル・マーケ支援・事業開発支援",
+          desc:   "MVV策定やSWOT分析、オープンイノベーション支援、業務の可視化・システム化を実施。関係者を巻き込みながら組織の価値観を可視化しました。"
+        },
+        {
+          client: "国立研究機関",
+          scope:  "データ入力業務DX",
+          desc:   "紙の問診票をOCR＋タブレット撮影でWebフォーム化し、FileMakerへ自動転送。多数の職員が費やしていた入力工数を大幅に削減しました。"
+        },
+        {
+          client: "製造業",
+          scope:  "在庫管理システム改修",
+          desc:   "エンタメ機器製造企業にて、バーコード連携による在庫状況のリアルタイム把握システムを構築。受注から発注まで一元管理を実現しました。"
+        },
+        {
+          client: "販売業（ジュエリー）",
+          scope:  "受発注・CRM改修",
+          desc:   "店舗ごとの在庫・売上管理と顧客向けWebサービスを構築。記念日に合わせたアップセル提案など、マーケ施策と連動した仕組みを実現しました。"
+        },
+        {
+          client: "医療機関",
+          scope:  "システム開発・DX",
+          desc:   "IoT・AIを活用し、医療従事者の業務負荷を削減するシステムを開発。現場職員への丁寧なヒアリングを通じ、課題の本質から解決策を設計しました。"
+        },
+        {
+          client: "医療機関",
+          scope:  "AI共同研究支援",
+          desc:   "画像解析で重症度を判定するAIアルゴリズムを医師と共同開発。専門医以外の医師も活用できる診療補助ツールとして実用化しました。"
+        },
+        {
+          client: "自治体",
+          scope:  "市民・職域への啓発活動",
+          desc:   "健康推進プロジェクトにおける計画立案・企業調整・リーフレット制作・セミナー実施・政策提言まで、プロジェクト全体を推進しました。"
+        },
+        {
+          client: "スタートアップ",
+          scope:  "デジタルマーケ支援",
+          desc:   "PdMとしてプロダクト戦略策定から開発推進を担いつつ、LP開発・ABテスト・デジタル広告・KPI分析など、デジタルマーケ全般を推進しました。"
+        },
+      ].each_with_index do |c, i| %>
+        <div class="col-md-6">
+          <div class="lp-case-card">
+            <div class="lp-case-header">
+              <span class="lp-case-num">CASE <%= "%02d" % (i+1) %></span>
+              <span class="lp-case-client"><%= c[:client] %></span>
+            </div>
+            <p class="lp-case-scope"><%= c[:scope] %></p>
+            <p class="lp-case-desc mb-0"><%= c[:desc] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <p class="text-center text-muted mt-4" style="font-size:0.9rem;">その他、多くの企業・スタートアップ等においてプロジェクト推進、プロダクト開発、Webサイト企画・構築を支援してきました。</p>
+  </div>
+</section>
+
+<%# ⑦ 料金 %>
+<section class="lp-section lp-pricing" id="pricing">
+  <div class="container">
+    <h2 class="lp-section-title text-center mb-2">料金・プラン</h2>
+    <p class="text-center text-muted mb-5">まずは相談から。目安感をご確認ください。</p>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4">
+        <div class="lp-price-card">
+          <div class="lp-price-icon">🤖</div>
+          <h4 class="lp-price-name">AI活用DX支援</h4>
+          <p class="lp-price-amount">5万円〜</p>
+          <p class="lp-price-desc">現場で数週間でAIを実装まで。小さく始めて確実に成果を出すDXです。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="lp-price-card">
+          <div class="lp-price-icon">📱</div>
+          <h4 class="lp-price-name">マーケ支援</h4>
+          <p class="lp-price-amount">数万円〜 / 本</p>
+          <p class="lp-price-desc">動画編集は1本数万円からでも対応可能。SNS運用もご相談ください。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="lp-price-card">
+          <div class="lp-price-icon">✨</div>
+          <h4 class="lp-price-name">ブランディングコンサル</h4>
+          <p class="lp-price-amount">1時間〜 相談可</p>
+          <p class="lp-price-desc">顧客やファンを増やすために何を伝えたいか、まず1時間のご相談から。</p>
+        </div>
+      </div>
+    </div>
+    <p class="text-center mt-4 fw-bold" style="font-size:1.1rem;">まずはお気軽に無料相談から！</p>
+  </div>
+</section>
+
+<%# ⑧ お問い合わせフォーム %>
+<section class="lp-section lp-contact" id="contact">
+  <div class="container">
+    <h2 class="lp-section-title text-center mb-2">無料相談・お問い合わせ</h2>
+    <p class="text-center text-muted mb-5">まずはお気軽にご相談ください。通常2営業日以内にご連絡いたします。</p>
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <%= form_with url: contacts_path, method: :post, local: true, class: "lp-contact-form" do |f| %>
+          <div class="mb-3">
+            <%= f.label :name, "お名前 *", class: "form-label" %>
+            <%= f.text_field :name, class: "form-control", placeholder: "山田 太郎", required: true %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :company, "会社名", class: "form-label" %>
+            <%= f.text_field :company, class: "form-control", placeholder: "株式会社〇〇" %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :email, "メールアドレス *", class: "form-label" %>
+            <%= f.email_field :email, class: "form-control", placeholder: "your@email.com", required: true %>
+          </div>
+          <div class="mb-4">
+            <%= f.label :description, "お悩み・ご相談概要 *", class: "form-label" %>
+            <%= f.text_area :description, class: "form-control", rows: 4, placeholder: "例：社内の見積書作成を自動化したい、SNS運用を始めたい など", required: true %>
+          </div>
+          <%= f.submit "無料相談を申し込む →", class: "btn lp-btn-primary w-100 lp-btn-lg" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ⑨ 会社概要 %>
+<section class="lp-section lp-company" id="company">
+  <div class="container">
+    <h2 class="lp-section-title text-center mb-5">会社概要</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <table class="lp-company-table">
+          <tbody>
+            <tr>
+              <th>会社名</th>
+              <td>MeRock</td>
+            </tr>
+            <tr>
+              <th>サービス内容</th>
+              <td>AI活用DX支援 / マーケ支援 / ブランディングコンサル</td>
+            </tr>
+            <tr>
+              <th>お問い合わせ</th>
+              <td><a href="mailto:contact@merock.co">contact@merock.co</a></td>
+            </tr>
+            <tr>
+              <th>Webサイト</th>
+              <td><a href="https://merock.co" target="_blank">merock.co</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

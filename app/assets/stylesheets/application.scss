@@ -1,5 +1,250 @@
 // app/assets/stylesheets/application.scss
 
+// ============================================================
+// LP (Landing Page) スタイル
+// ============================================================
+
+$lp-yellow:  #FAD02C;
+$lp-dark:    #1a1a1a;
+$lp-gray:    #f8f8f8;
+$lp-border:  #e8e8e8;
+
+// ナビ
+.lp-nav {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid $lp-border;
+  .nav-link { color: $lp-dark; font-weight: 500; &:hover { color: darken($lp-yellow, 20%); } }
+}
+.lp-brand {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: $lp-dark !important;
+  letter-spacing: -0.5px;
+}
+.lp-flash {
+  margin-top: 70px;
+}
+
+// 共通ボタン
+.lp-btn-primary {
+  background: $lp-yellow;
+  color: $lp-dark;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  &:hover { background: darken($lp-yellow, 8%); color: $lp-dark; }
+}
+.lp-btn-lg { padding: 14px 36px; font-size: 1.05rem; }
+
+// セクション共通
+.lp-section {
+  padding: 80px 0;
+}
+.lp-section-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: $lp-dark;
+  position: relative;
+  display: inline-block;
+  &::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 4px;
+    background: $lp-yellow;
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+}
+
+// ① Hero
+.lp-hero {
+  min-height: 100vh;
+  background: #fff;
+  padding-top: 80px;
+}
+.lp-hero-sub {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: darken($lp-yellow, 25%);
+  text-transform: uppercase;
+}
+.lp-hero-title {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 900;
+  color: $lp-dark;
+  line-height: 1.2;
+}
+.lp-hero-lead {
+  font-size: 1.15rem;
+  color: #555;
+}
+
+// ② 課題提起
+.lp-pain {
+  background: $lp-gray;
+}
+.lp-pain-card {
+  background: #fff;
+  border: 1px solid $lp-border;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 0.95rem;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.lp-pain-icon { font-size: 1.4rem; flex-shrink: 0; }
+.lp-pain-answer {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $lp-dark;
+  strong { color: darken($lp-yellow, 20%); }
+}
+
+// ③ サービス
+.lp-services-section {
+  background: #fff;
+}
+.lp-service-card {
+  border: 1px solid $lp-border;
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+  transition: box-shadow 0.2s;
+  &:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+}
+.lp-service-icon { font-size: 2.4rem; display: block; margin-bottom: 16px; }
+.lp-service-name { font-size: 1.1rem; font-weight: 800; color: $lp-dark; margin-bottom: 6px; }
+.lp-service-tagline { font-size: 0.85rem; color: #777; margin-bottom: 14px; }
+.lp-service-desc { font-size: 0.9rem; color: #555; line-height: 1.7; }
+
+// ④ 選ばれる理由
+.lp-why {
+  background: $lp-gray;
+}
+.lp-why-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  border-top: 4px solid $lp-yellow;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.lp-why-num { font-size: 2rem; font-weight: 900; color: $lp-yellow; margin-bottom: 8px; }
+.lp-why-title { font-size: 1.1rem; font-weight: 800; color: $lp-dark; margin-bottom: 10px; }
+.lp-why-desc { font-size: 0.9rem; color: #555; line-height: 1.7; }
+
+// ⑤ 実績
+.lp-cases-section {
+  background: #fff;
+}
+.lp-case-card {
+  border: 1px solid $lp-border;
+  border-radius: 12px;
+  padding: 24px 22px;
+  height: 100%;
+  transition: box-shadow 0.2s;
+  &:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
+}
+.lp-case-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.lp-case-num {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: $lp-yellow;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: $lp-dark;
+}
+.lp-case-client { font-weight: 700; font-size: 0.95rem; color: $lp-dark; }
+.lp-case-scope {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 600;
+  margin-bottom: 10px;
+  border-bottom: 1px solid $lp-border;
+  padding-bottom: 8px;
+}
+.lp-case-desc { font-size: 0.88rem; color: #555; line-height: 1.75; }
+
+// ⑦ 料金
+.lp-pricing {
+  background: $lp-gray;
+}
+.lp-price-card {
+  background: #fff;
+  border: 1px solid $lp-border;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+.lp-price-icon { font-size: 2.2rem; display: block; margin-bottom: 14px; }
+.lp-price-name { font-size: 1rem; font-weight: 800; color: $lp-dark; margin-bottom: 8px; }
+.lp-price-amount {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: darken($lp-yellow, 20%);
+  margin-bottom: 10px;
+}
+.lp-price-desc { font-size: 0.88rem; color: #666; line-height: 1.7; }
+
+// ⑧ 問い合わせ
+.lp-contact {
+  background: #fff;
+  .form-label { font-weight: 600; font-size: 0.9rem; }
+  .form-control {
+    border-radius: 8px;
+    border: 1px solid $lp-border;
+    &:focus { border-color: $lp-yellow; box-shadow: 0 0 0 3px rgba($lp-yellow, 0.25); }
+  }
+}
+.lp-contact-form {
+  background: $lp-gray;
+  padding: 40px 36px;
+  border-radius: 20px;
+}
+
+// ⑨ 会社概要
+.lp-company {
+  background: $lp-gray;
+}
+.lp-company-table {
+  width: 100%;
+  border-collapse: collapse;
+  th, td {
+    padding: 14px 18px;
+    border: 1px solid $lp-border;
+    font-size: 0.92rem;
+    vertical-align: middle;
+  }
+  th {
+    background: #fff;
+    font-weight: 700;
+    width: 180px;
+    color: #444;
+    white-space: nowrap;
+  }
+  td { background: #fff; color: #333; }
+  a { color: $lp-dark; text-decoration: underline; }
+}
+
+// フッター
+.lp-footer {
+  background: $lp-dark;
+  color: #ccc;
+  padding: 32px 0;
+}
+
 html, body {
   width: 100% !important;
   margin: 0 auto;
@@ -288,4 +533,410 @@ footer {
 .sidebar .nav-pills .nav-link.active { 
   background-color: #6c757d !important; 
   color: #fff !important; 
+}
+
+// ============================================================
+// 村岡キャンプ LP スタイル
+// ============================================================
+
+$camp-green:    #2D5016;
+$camp-green-lt: #4A7A28;
+$camp-amber:    #E8A830;
+$camp-cream:    #F5F0E8;
+$camp-brown:    #2C2416;
+$camp-gray:     #F0EDE8;
+$camp-border:   #D8D0C0;
+
+.camp-body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: $camp-brown;
+  background: #fff;
+}
+
+// ナビ
+.camp-nav {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid $camp-border;
+  padding: 10px 0;
+}
+.camp-brand {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $camp-green !important;
+  letter-spacing: 0.02em;
+}
+.camp-brand-icon { font-size: 1rem; }
+.camp-nav-link {
+  color: $camp-brown !important;
+  font-size: 0.88rem;
+  font-weight: 500;
+  &:hover { color: $camp-green !important; }
+}
+
+// ボタン
+.camp-btn-primary {
+  background: $camp-green;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  &:hover { background: $camp-green-lt; color: #fff; }
+}
+.camp-btn-lg { padding: 14px 40px; font-size: 1rem; }
+
+// ヒーロー
+.camp-hero {
+  position: relative;
+  height: 50vh;
+  min-height: 320px;
+  padding-top: 56px;
+  background: linear-gradient(135deg, #1a3009 0%, #2D5016 40%, #4A7A28 70%, #6B9A3E 100%);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+.camp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+}
+.camp-hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  .camp-btn-primary {
+    background: $camp-amber;
+    color: $camp-brown;
+    &:hover { background: darken(#E8A830, 8%); color: $camp-brown; }
+  }
+}
+.camp-hero-title {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+.camp-hero-copy {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+.camp-hero-divider {
+  width: 48px;
+  height: 2px;
+  background: $camp-amber;
+  margin: 0 auto 1rem;
+}
+.camp-hero-date {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.2rem;
+}
+.camp-scroll-indicator {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.camp-scroll-arrow {
+  font-size: 1.4rem;
+  animation: campBounce 1.5s ease-in-out infinite;
+}
+@keyframes campBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+// セクション共通
+.camp-section {
+  padding: 90px 0;
+}
+.camp-section-light {
+  background: $camp-cream;
+}
+.camp-section-title {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: $camp-brown;
+}
+.camp-section-underline {
+  width: 48px;
+  height: 3px;
+  background: $camp-amber;
+  margin-top: 10px;
+}
+.camp-section-lead {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+.camp-about-text {
+  font-size: 1rem;
+  line-height: 2;
+  color: $camp-brown;
+}
+
+// 画像プレースホルダー
+.camp-img-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #ddd;
+  border: 2px dashed #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #888;
+  font-size: 0.9rem;
+}
+.camp-img-sm { aspect-ratio: 4/3; }
+
+// プレキャンプ フィーチャーカード
+.camp-feature-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px 24px;
+  text-align: center;
+  border: 1px solid $camp-border;
+  height: 100%;
+}
+.camp-feature-icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+.camp-feature-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: $camp-green;
+  margin-bottom: 8px;
+}
+.camp-feature-desc {
+  font-size: 0.88rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.7;
+}
+
+// 動画カード
+.camp-video-card { text-align: center; }
+.camp-video-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #c8c0b0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover { background: #b8b0a0; }
+}
+.camp-play-btn {
+  width: 56px;
+  height: 56px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: $camp-green;
+}
+.camp-video-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  color: $camp-brown;
+}
+.camp-video-desc {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
+
+// イベント概要カード
+.camp-overview-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px 20px;
+  text-align: center;
+  border: 1px solid $camp-border;
+  height: 100%;
+}
+.camp-overview-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.camp-overview-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: $camp-green;
+  margin-bottom: 8px;
+}
+.camp-overview-val {
+  font-size: 0.88rem;
+  color: $camp-brown;
+  line-height: 1.8;
+  margin: 0;
+  small { color: #888; }
+}
+
+// アコーディオン
+.camp-accordion-item {
+  border: 1px solid $camp-border;
+  border-radius: 6px !important;
+  margin-bottom: 8px;
+  overflow: hidden;
+  &:not(:first-child) { border-top: 1px solid $camp-border !important; }
+}
+.camp-accordion-btn {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: $camp-brown;
+  background: #fff;
+  padding: 18px 20px;
+  &:not(.collapsed) {
+    background: $camp-cream;
+    color: $camp-green;
+    box-shadow: none;
+  }
+  &::after { filter: none; }
+  &:focus { box-shadow: none; }
+}
+.camp-accordion-body {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.8;
+  background: #faf8f5;
+}
+
+// CTA
+.camp-cta {
+  padding: 90px 0;
+  background: $camp-green;
+  color: #fff;
+}
+.camp-cta-title {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+.camp-cta-text {
+  font-size: 1rem;
+  line-height: 2;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+}
+.camp-cta .camp-btn-primary {
+  background: $camp-amber;
+  color: $camp-brown;
+  &:hover { background: darken(#E8A830, 8%); color: $camp-brown; }
+}
+
+// フッター
+.camp-footer {
+  background: $camp-brown;
+  color: #ccc;
+  padding: 60px 0 30px;
+}
+.camp-footer-brand {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.camp-footer-tagline {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+.camp-footer-heading {
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.camp-footer-list {
+  font-size: 0.85rem;
+  color: #aaa;
+  line-height: 2;
+}
+.camp-footer-hr {
+  border-color: rgba(255,255,255,0.1);
+  margin: 30px 0 16px;
+}
+.camp-footer-copy {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+}
+
+.camp-logo-img { object-fit: contain; }
+.camp-footer-logo { object-fit: contain; }
+
+// ============================================================
+// 村岡キャンプ レスポンシブ幅制御（950px）
+// ============================================================
+
+// グローバルの body max-width をキャンプページでリセット
+body.camp-body {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+// キャンプページ内の .container を 950px に統一
+.camp-body .container {
+  max-width: 950px;
+}
+
+// ナビ固定バーの幅も 950px に
+.camp-body .camp-nav .container {
+  max-width: 950px;
+}
+
+// ヒーロー・CTAなどフル幅背景はそのまま幅100%
+.camp-body .camp-hero,
+.camp-body .camp-section,
+.camp-body .camp-cta,
+.camp-body .camp-footer {
+  width: 100%;
+}
+
+// スマホ (< 576px)
+@media (max-width: 575.98px) {
+  .camp-hero-title { font-size: 2.4rem; }
+  .camp-hero-copy  { font-size: 0.95rem; }
+  .camp-hero-date  { font-size: 1rem; }
+  .camp-btn-lg     { padding: 12px 24px; font-size: 0.95rem; }
+  .camp-section    { padding: 60px 0; }
+  .camp-cta        { padding: 60px 0; }
+  .camp-cta-title  { font-size: 1.3rem; }
+  .camp-section-title { font-size: 1.4rem; }
+  .camp-overview-card { padding: 20px 14px; }
+  .camp-feature-card  { padding: 20px 16px; }
+}
+
+// タブレット (576px – 767px)
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .camp-hero-title { font-size: 3rem; }
+  .camp-section    { padding: 70px 0; }
 }

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="icon" type="image/png" href="/favicon_muraoka.png">
+  <title>村岡キャンプ 2026 | まちの未来を、焚き火のそばで話そう。</title>
+</head>
+<body class="camp-body">
+
+  <!-- ナビゲーション -->
+  <nav class="navbar navbar-expand-md fixed-top camp-nav">
+    <div class="container">
+      <a class="navbar-brand camp-brand" href="/muraoka-camp">
+        <%= image_tag "muraoka-camp-logo.png", height: 48, alt: "村岡キャンプ", class: "camp-logo-img" %>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#campNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="campNav">
+        <ul class="navbar-nav ms-auto me-3">
+          <li class="nav-item"><a class="nav-link camp-nav-link" href="#about">村岡キャンプへの思い</a></li>
+          <li class="nav-item"><a class="nav-link camp-nav-link" href="#precamp">プレキャンプを経て、本募集へ</a></li>
+          <li class="nav-item"><a class="nav-link camp-nav-link" href="#videos">動画</a></li>
+          <li class="nav-item"><a class="nav-link camp-nav-link" href="#overview">イベント概要</a></li>
+          <li class="nav-item"><a class="nav-link camp-nav-link" href="#notes">注意事項</a></li>
+        </ul>
+        <a href="#apply" class="btn camp-btn-primary">参加申し込み</a>
+      </div>
+    </div>
+  </nav>
+
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-<%= type == 'notice' ? 'success' : 'danger' %> alert-dismissible fade show" style="margin-top:70px;" role="alert">
+      <%= msg %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  <% end %>
+
+  <%= yield %>
+
+  <!-- フッター -->
+  <footer class="camp-footer">
+    <div class="container">
+      <div class="row align-items-start">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <%= image_tag "muraoka-camp-logo.png", height: 72, alt: "村岡キャンプ", class: "camp-footer-logo mb-2" %>
+          <p class="camp-footer-tagline">まちの未来を、焚き火のそばで話そう。</p>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0">
+          <p class="camp-footer-heading">お問い合わせ</p>
+          <ul class="list-unstyled camp-footer-list">
+            <li>&#9993; info@muraoka-camp.jp</li>
+            <li>&#128222; 090-1234-5678（担当：村岡キャンプ事務局）</li>
+            <li>受付時間：平日 10:00〜17:00</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <p class="camp-footer-heading">SNS</p>
+          <ul class="list-unstyled camp-footer-list">
+            <li>&#9654; YouTube</li>
+            <li>&#128247; Instagram</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="camp-footer-hr">
+      <p class="camp-footer-copy">&copy; 2026 村岡キャンプ実行委員会 All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
