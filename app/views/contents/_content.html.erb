@@ -38,12 +38,16 @@
     <% if show_full %>
       <!-- 詳細ページ：常に全文（transcribed_text 優先、無ければ summarized_text） -->
       <div class="full-text">
-        <p>＜全文＞</p>
-        <%= simple_format((content.transcribed_text.presence || content.summarized_text).to_s) %>
+        <% if content.article_body.present? %>
+          <%= simple_format(content.article_body) %>
+        <% else %>
+          <p>＜全文＞</p>
+          <%= simple_format((content.transcribed_text.presence || content.summarized_text).to_s) %>
+        <% end %>
       </div>
     <% else %>
       <!-- 一覧など：プレビューだけ -->
-      <% preview_text = content.summarized_text.presence || content.transcribed_text %>
+      <% preview_text = content.summarized_text.presence || content.article_body.presence || content.transcribed_text %>
       <p>＜要約＞</p>
       <p class="mb-2"><%= truncate(preview_text.to_s, length: 200) %></p>
       <%# <%= link_to "全文を読む", content_path(content), class: "stretched-link btn btn-link p-0 align-baseline" %>

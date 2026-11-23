@@ -1,7 +1,10 @@
 # routes.rb
 Rails.application.routes.draw do
   get 'sessions/new'
-  root "contents#index"
+  root "pages#home"
+  get '/muraoka-camp', to: 'pages#muraoka_camp', as: :muraoka_camp
+
+  post "/contacts", to: "contacts#create", as: :contacts
 
   resources :contents, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorite, only: [:create, :destroy]
@@ -10,6 +13,13 @@ Rails.application.routes.draw do
     end
     collection do
       post :preview_summary
+    end
+  end
+
+  resources :articles, only: [:new, :create] do
+    collection do
+      get  :search
+      post :preview
     end
   end
 

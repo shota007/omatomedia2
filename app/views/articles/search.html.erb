@@ -1,0 +1,22 @@
+<div class="m-auto" style="max-width: 640px;">
+  <h3 class="fw-bold text-center">YouTubeから記事を作る</h3>
+
+  <%= form_with url: search_articles_path, method: :get, local: true, class: "my-4 d-flex gap-2" do %>
+    <%= text_field_tag :q, @query, class: "form-control", placeholder: "キーワードで動画を検索" %>
+    <%= submit_tag "検索", class: "btn btn-secondary", name: nil %>
+  <% end %>
+
+  <% @results.each do |r| %>
+    <div class="d-flex gap-3 mb-3 align-items-center">
+      <%= image_tag r.thumbnail, width: 160, class: "rounded" %>
+      <div class="flex-grow-1">
+        <div class="fw-bold"><%= r.title %></div>
+        <div class="text-muted small"><%= r.channel %></div>
+      </div>
+      <%= button_to "記事にする", preview_articles_path, method: :post, class: "btn btn-sm btn-outline-secondary",
+            params: { video_id: r.video_id, video_title: r.title, channel: r.channel, q: @query },
+            form: { data: { turbo: false } } %>
+    </div>
+  <% end %>
+  <p class="text-muted small text-center">※ 記事生成には30秒〜1分ほどかかります。字幕のある動画のみ対応。</p>
+</div>

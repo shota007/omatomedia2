@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_08_09_002837) do
+ActiveRecord::Schema[7.0].define(version: 2026_11_22_000000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -64,6 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_09_002837) do
     t.integer "user_id", null: false
     t.string "youtube_id"
     t.integer "category_id", null: false
+    t.text "article_body"
+    t.string "source_channel"
     t.index ["category_id"], name: "index_contents_on_category_id"
     t.index ["user_id"], name: "index_contents_on_user_id"
   end
@@ -74,6 +76,40 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_09_002837) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "content_id"], name: "index_favorites_on_user_id_and_content_id", unique: true
+  end
+
+  create_table "npo_sources", force: :cascade do |t|
+    t.integer "npo_id", null: false
+    t.string "source_type"
+    t.string "url"
+    t.string "title"
+    t.datetime "fetched_at"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["npo_id"], name: "index_npo_sources_on_npo_id"
+  end
+
+  create_table "npos", force: :cascade do |t|
+    t.string "name"
+    t.string "name_kana"
+    t.string "corporate_number"
+    t.string "prefecture"
+    t.string "city"
+    t.string "address"
+    t.string "representative_name"
+    t.date "established_on"
+    t.string "website_url"
+    t.string "phone"
+    t.string "email"
+    t.text "summary"
+    t.integer "status", default: 0, null: false
+    t.datetime "last_verified_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["corporate_number"], name: "index_npos_on_corporate_number", unique: true
+    t.index ["name"], name: "index_npos_on_name"
+    t.index ["status"], name: "index_npos_on_status"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -128,5 +164,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_09_002837) do
   add_foreign_key "contents", "users"
   add_foreign_key "favorites", "contents"
   add_foreign_key "favorites", "users"
+  add_foreign_key "npo_sources", "npos"
   add_foreign_key "taggings", "tags"
 end

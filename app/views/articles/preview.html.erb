@@ -1,0 +1,30 @@
+<div class="m-auto" style="max-width: 720px;">
+  <h3 class="fw-bold text-center">記事プレビュー</h3>
+  <%= image_tag "https://img.youtube.com/vi/#{@content.youtube_id}/hqdefault.jpg", class: "d-block mx-auto my-3", width: 480 %>
+
+  <%= form_with model: @content, url: articles_path, scope: :content, method: :post, local: true do |f| %>
+    <%= f.hidden_field :youtube_id %>
+    <%= f.hidden_field :source_channel %>
+    <% @content.errors.full_messages.each do |m| %><div class="text-danger"><%= m %></div><% end %>
+
+    <div class="mb-3">
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title, class: "form-control", required: true %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :category_id, "カテゴリー" %>
+      <%= f.collection_select :category_id, @categories, :id, :name, { prompt: "選択してください" }, { class: "form-select", required: true } %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :tag_list, "ハッシュタグ" %>
+      <%= f.text_field :tag_list, value: Array(@content.tag_list).join(", "), class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :article_body, "本文（Markdown）" %>
+      <%= f.text_area :article_body, rows: 24, class: "form-control" %>
+    </div>
+    <div class="text-center mb-5">
+      <%= f.submit "保存する", class: "btn btn-secondary w-50" %>
+    </div>
+  <% end %>
+</div>
