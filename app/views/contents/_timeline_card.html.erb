@@ -1,0 +1,41 @@
+<%# app/views/contents/_timeline_card.html.erb %>
+<% thumb = timeline_thumb(content) %>
+<% tags = Array(content.tag_list).reject(&:blank?) %>
+<article class="tl-card position-relative">
+  <div class="tl-avatar">
+    <% if content.user&.avatar&.attached? %>
+      <%= image_tag content.user.avatar, class: "rounded-circle", size: "48x48" %>
+    <% else %>
+      <%= image_tag "noimage.png", class: "rounded-circle", size: "48x48" %>
+    <% end %>
+  </div>
+
+  <div class="tl-body">
+    <div class="tl-meta">
+      <strong class="tl-name"><%= content.user&.name %></strong>
+      <span class="tl-time">· <%= up_time(content) %></span>
+      <% if content.source_channel.present? %>
+        <span class="tl-time">· <%= content.source_channel %></span>
+      <% end %>
+    </div>
+
+    <h2 class="tl-card-title">
+      <%= link_to content.title, content_path(content), class: "stretched-link text-decoration-none" %>
+    </h2>
+    <p class="tl-excerpt"><%= timeline_excerpt(content) %></p>
+
+    <% if thumb %>
+      <div class="tl-media"><%= image_tag thumb, loading: "lazy", alt: content.title %></div>
+    <% end %>
+
+    <% if tags.any? %>
+      <div class="tl-tags position-relative">
+        <% tags.each do |tag| %>
+          <%= link_to "##{tag}", root_path(tag: tag) %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= render partial: "contents/func_btn", locals: { content: content } %>
+  </div>
+</article>

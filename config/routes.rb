@@ -1,7 +1,8 @@
 # routes.rb
 Rails.application.routes.draw do
   get 'sessions/new'
-  root "pages#home"
+  root "contents#index"
+  get '/about', to: 'pages#home', as: :about
   get '/muraoka-camp', to: 'pages#muraoka_camp', as: :muraoka_camp
 
   post "/contacts", to: "contacts#create", as: :contacts

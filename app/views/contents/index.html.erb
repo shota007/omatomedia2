@@ -1,6 +1,21 @@
-<%# app/views/contents/index.html %>
-<% @contents.each do |content| %>
-  <div class="each_content m-auto p-3" style="width: 500px;">
-    <%= render partial: "contents/content", collection: @contents, as: :content %>
+<%# app/views/contents/index.html.erb : X風タイムライン %>
+<div class="tl">
+  <div class="tl-header">
+    <h1 class="tl-title">ホーム</h1>
+    <% if params[:word].present? || params[:tag].present? || params[:category_id].present? %>
+      <span class="tl-filter">
+        <%= params[:word].presence || (params[:tag].present? ? "##{params[:tag]}" : "絞り込み中") %>
+        <%= link_to "解除", root_path, class: "ms-2" %>
+      </span>
+    <% end %>
+    <% if logged_in? %>
+      <%= link_to "記事を作る", search_articles_path, class: "tl-compose" %>
+    <% end %>
   </div>
-<% end %>
+
+  <% if @contents.empty? %>
+    <p class="tl-empty">まだ記事がありません。</p>
+  <% else %>
+    <%= render partial: "contents/timeline_card", collection: @contents, as: :content %>
+  <% end %>
+</div>

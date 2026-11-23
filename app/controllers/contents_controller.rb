@@ -8,10 +8,11 @@ class ContentsController < ApplicationController
   require 'open3'
 
   def index
-    scope = Content.all
+    scope = Content.includes(:taggings, :tags, img_file_attachment: :blob, user: { avatar_attachment: :blob })
     scope = scope.looks(params[:word]) if params[:word].present?
+    scope = scope.tagged_with(params[:tag]) if params[:tag].present?
     scope = scope.where(category_id: params[:category_id]) if params[:category_id].present?
-    @contents = scope.order(created_at: :desc)
+    @contents = scope.order(created_at: :desc).limit(50)
   end
 
   def new
