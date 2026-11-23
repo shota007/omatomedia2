@@ -26,6 +26,10 @@ services:
       - key: RACK_ENV
         value: production
 
+      # assets:precompile(autoprefixer-rails)が bun を選んで失敗するため Node を明示する
+      - key: EXECJS_RUNTIME
+        value: Node
+
       # Rails の secret_key_base は Render に生成してもらう
       - key: SECRET_KEY_BASE
         generateValue: true
